@@ -67,6 +67,9 @@ body{background:#f5f6f2}.shell{width:min(100% - 120px,1280px)}
 @media(max-width:560px){.research-row{grid-template-columns:30px minmax(0,1fr) 20px;gap:12px;min-height:0;padding:24px 0}.research-visual{display:none}.research-number{font-size:.63rem}.research-arrow{font-size:1.15rem}.research-card h3{font-size:1.15rem;margin:10px 0}.research-topics{font-size:.7rem}}
 @media(prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation-duration:.001ms!important}}
 
-/* Keep the supplied portrait's original framing and color. */
-.portrait-frame{aspect-ratio:1}
+/* An oval portrait and a quieter introduction. */
+.hero h1{font-size:clamp(3.5rem,6vw,6rem);line-height:1;margin:60px 0 28px}
+.hero-deck{max-width:560px}
+.portrait-frame{aspect-ratio:4/5;border-radius:50%}
 .portrait-frame img{filter:none;object-position:center}
+@media(max-width:640px){.hero h1{font-size:clamp(3rem,10vw,4.4rem);margin:45px 0 26px}.hero-side{width:min(80%,320px)}}

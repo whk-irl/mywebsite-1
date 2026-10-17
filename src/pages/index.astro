@@ -11,8 +11,8 @@ const chosen = publications.filter((item) => item.featured || item.slug === 'con
       <div class="shell hero-wrap">
         <div class="hero-main">
           <p class="hero-overline">Instructor &amp; researcher <span class="hero-location">Dallas, Texas</span></p>
-          <h1>Haokun<br />Wang<span class="hero-period">.</span></h1>
-          <p class="hero-deck">I build systems for healthcare and human experience, working across medical AI, haptics, and extended reality.</p>
+          <h1>Haokun Wang<span class="hero-period">.</span></h1>
+          <p class="hero-deck">I’m an Instructor at UT Southwestern Medical Center working across medical AI, haptics, and extended reality. I build systems that connect software, sensors, and physical interfaces—from medical imaging and patient tracking to immersive training.</p>
           <div class="hero-actions"><a class="hero-link" href="#work">Selected work <span>↘</span></a><a class="hero-link muted-link" href="/uploads/resume.pdf">Download CV <span>↗</span></a></div>
         </div>
         <div class="hero-side"><div class="portrait-frame"><img src={portrait.src} alt="Haokun Wang" /></div><p class="portrait-caption"><span>Haokun Wang</span><span>UT Southwestern Medical Center</span></p></div>
@@ -27,7 +27,12 @@ const chosen = publications.filter((item) => item.featured || item.slug === 'con
 
     <section class="intro-section section-pad" id="about"><div class="shell about-layout">
       <div><p class="section-label">02 / About</p><h2>Research that<br /><em>connects people<br />and technology.</em></h2></div>
-      <div class="about-copy" data-reveal><p>I’m an Instructor in the Medical Artificial Intelligence and Automation Lab, Department of Radiation Oncology, at UT Southwestern Medical Center.</p><p>My work includes medical imaging segmentation tools, an IoT patient tracking system, and medical VR training. My background is in electrical engineering and spans wearable haptics, XR, hardware prototyping, and human-subject research.</p><div class="about-links"><a href="/uploads/resume.pdf">Curriculum vitae ↗</a><a href="https://scholar.google.com/citations?user=AzitNLgAAAAJ&amp;hl=en">Google Scholar ↗</a></div></div>
+      <div class="about-copy" data-reveal>
+        <p>I’m an Instructor in the Medical Artificial Intelligence and Automation Lab, Department of Radiation Oncology, at UT Southwestern Medical Center. My current work includes medical imaging segmentation tools, an IoT patient-tracking system, and VR training for clinical education.</p>
+        <p>I completed my Ph.D. in Electrical Engineering at the University of Texas at Dallas, where my research focused on haptics and multisensory interaction for AR and VR. I designed wearable and mid-air interfaces that bring thermal and tactile sensations into digital experiences.</p>
+        <p>My work spans the full process of building a system: selecting actuators, developing embedded firmware and Unity applications, integrating sensors, processing signals, and evaluating prototypes with users.</p>
+        <div class="about-links"><a href="/uploads/resume.pdf">Curriculum vitae ↗</a><a href="https://scholar.google.com/citations?user=AzitNLgAAAAJ&amp;hl=en">Google Scholar ↗</a></div>
+      </div>
     </div></section>
 
     <section class="news-section section-pad" id="news"><div class="shell about-layout"><div><p class="section-label">03 / Updates</p><h2>Recent notes</h2></div><div><div class="news-list">{posts.slice(0, 4).map((post) => <a href={`/post/${post.slug}/`}><time datetime={String(post.date)}>{new Date(post.date).toLocaleString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })}</time><span>{post.title}</span><span>↗</span></a>)}</div><a class="text-link" href="/post/">All updates ↗</a></div></div></section>
