@@ -1,0 +1,58 @@
+{{ define "main" }}
+{{ if .IsHome }}
+{{ $author := site.GetPage "authors/admin" }}
+{{ $avatar := $author.Resources.GetMatch "avatar*" }}
+{{ $publications := where site.RegularPages "Section" "publication" }}
+<main class="portfolio">
+  <section class="portfolio-hero" aria-labelledby="hero-title">
+    <div class="hero-inner portfolio-shell">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> RESEARCH &amp; ENGINEERING <span class="eyebrow-divider">/</span> DALLAS, TX</p>
+        <h1 id="hero-title">Designing<br>technology <em>for</em><br><span>human experience.</span></h1>
+        <p class="hero-intro">I'm Haokun Wang, an instructor and researcher working across medical physics, human-computer interaction, and extended reality.</p>
+        <div class="hero-actions">
+          <a class="portfolio-button button-light" href="#selected">Explore selected work <span aria-hidden="true">↘</span></a>
+          <a class="text-link light-link" href="/uploads/resume.pdf">Download CV <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="hero-aside">
+        <div class="hero-portrait">{{ with $avatar }}{{ $portrait := .Fill "680x840 Center" }}<img src="{{ $portrait.RelPermalink }}" alt="Haokun Wang" width="680" height="840">{{ end }}<span class="portrait-cross" aria-hidden="true">+</span></div>
+        <div class="hero-caption"><span>HAOKUN WANG</span><span>RESEARCHER / ENGINEER</span></div>
+      </div>
+    </div>
+    <div class="hero-bottom portfolio-shell"><span>MEDICAL PHYSICS &nbsp; / &nbsp; HAPTICS &nbsp; / &nbsp; XR</span><a href="#about">SCROLL TO DISCOVER ↓</a></div>
+  </section>
+
+  <section class="portfolio-section about-section" id="about">
+    <div class="portfolio-shell section-grid">
+      <div class="section-index"><span>01 / PROFILE</span><span class="index-line"></span></div>
+      <div class="about-content"><p class="section-kicker">A LITTLE ABOUT ME</p><h2>Research at the intersection of <em>people</em> and technology.</h2><div class="about-columns"><p>I’m an Instructor in Radiation Oncology – Medical Physics &amp; Engineering at UT Southwestern Medical Center. My work brings together electrical engineering, medical technology, human-computer interaction, haptics, and XR.</p><p>From custom hardware and software to human-subject studies, I build and evaluate systems that connect rigorous engineering with real human experiences.</p></div><a class="arrow-link" href="/uploads/resume.pdf">More about my experience <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
+
+  <section class="portfolio-section work-section" id="selected">
+    <span id="work"></span>
+    <div class="portfolio-shell">
+      <div class="section-heading"><div><p class="section-kicker">02 / SELECTED RESEARCH</p><h2>Ideas, made tangible<span class="accent-dot">.</span></h2></div><p>Experiments, interfaces, and systems exploring how technology can be felt and experienced.</p></div>
+      <div class="work-grid">
+        {{ with site.GetPage "publication/conference-paper-thermal-masking-body" }}
+        <article class="work-card work-card-feature"><a class="card-image abstract-image" href="{{ .RelPermalink }}" aria-label="Read {{ .Title }}"><span class="abstract-grid"></span><span class="abstract-orbit orbit-one"></span><span class="abstract-orbit orbit-two"></span><span class="abstract-label">THERMAL<br>MASKING<br><small>HUMAN BODY / 2026</small></span><span class="image-arrow" aria-hidden="true">↗</span></a><div class="card-meta"><span>CHI / 2026</span><span>01</span></div><h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3><p>Perception · Haptics · Human-computer interaction</p></article>
+        {{ end }}
+        {{ range $i, $p := where $publications "Params.featured" true }}
+        <article class="work-card"><a class="card-image" href="{{ .RelPermalink }}" aria-label="Read {{ .Title }}">{{ with .Resources.GetMatch "*featured*" }}{{ $img := .Fill "900x620 Center" }}<img src="{{ $img.RelPermalink }}" alt="" width="900" height="620" loading="lazy">{{ end }}<span class="image-arrow" aria-hidden="true">↗</span></a><div class="card-meta"><span>{{ .Params.publication_short | default "RESEARCH" }} / {{ .Date.Format "2006" }}</span><span>{{ printf "%02d" (add $i 2) }}</span></div><h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>{{ with .Params.tags }}<p>{{ delimit (first 3 .) " · " }}</p>{{ end }}</article>
+        {{ end }}
+      </div>
+      <div class="section-end"><span>RESEARCH ARCHIVE</span><a class="arrow-link" href="/publication/">View all publications <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
+
+  <section class="portfolio-section approach-section" id="approach"><div class="portfolio-shell section-grid"><div class="section-index"><span>03 / APPROACH</span><span class="index-line"></span></div><div><p class="section-kicker">HOW I WORK</p><h2>From a question<br>to a working system<span class="accent-dot">.</span></h2><div class="approach-list"><div><span>01</span><h3>Frame</h3><p>Define the problem through research, observation, and interdisciplinary inquiry.</p></div><div><span>02</span><h3>Build</h3><p>Develop hardware, software, and interactive prototypes that make ideas testable.</p></div><div><span>03</span><h3>Evaluate</h3><p>Use experiments and human-centered methods to understand what works and why.</p></div></div></div></div></section>
+
+  <section class="portfolio-section news-section" id="news"><div class="portfolio-shell section-grid"><div class="section-index"><span>04 / NOTES</span><span class="index-line"></span></div><div><div class="section-heading compact"><div><p class="section-kicker">LATEST UPDATES</p><h2>News &amp; notes<span class="accent-dot">.</span></h2></div><a class="arrow-link" href="/post/">All news ↗</a></div><div class="news-list">{{ range first 4 (where site.RegularPages "Section" "post") }}<a class="news-item" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "JAN 2006" }}</time><span>{{ .Title }}</span><span aria-hidden="true">↗</span></a>{{ end }}</div></div></div></section>
+
+  <section class="portfolio-contact" id="contact"><div class="portfolio-shell"><div class="contact-top"><p class="section-kicker">05 / CONTACT</p><span>OPEN TO COLLABORATION</span></div><h2>Let's make something<br><em>meaningful.</em></h2><div class="contact-bottom"><a class="contact-email" href="mailto:haokun.wang@utsouthwestern.edu">haokun.wang@utsouthwestern.edu ↗</a><div><a href="https://www.linkedin.com/in/haokun-wang-854548239/">LinkedIn ↗</a><a href="https://scholar.google.com/citations?user=AzitNLgAAAAJ&amp;hl=en">Google Scholar ↗</a><a href="https://github.com/whk-irl">GitHub ↗</a></div></div></div></section>
+</main>
+{{ else }}
+{{ partial "landing_page.html" . }}
+{{ end }}
+{{ end }}

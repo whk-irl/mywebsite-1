@@ -7,7 +7,7 @@ main:
     url: /#selected
     weight: 10
   - name: Publications
-    url: /#papers
+    url: /publication/
     weight: 20
   - name: Approach
     url: /#approach
