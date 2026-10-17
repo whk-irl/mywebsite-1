@@ -40,7 +40,7 @@ links:
   url: '/uploads/IEEEVR23_UpperBody.pdf'
   icon_pack: fas
   icon: file-pdf
-url_code: ''
+url_code: 'https://github.com/whk-irl/Thermal-Suit'
 url_dataset: ''
 url_poster: ''
 url_project: ''

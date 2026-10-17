@@ -32,7 +32,7 @@ links:
   url: '/uploads/IMWUT2024_Snow.pdf'
   icon_pack: fas
   icon: file-pdf
-url_code: ''
+url_code: 'https://github.com/whk-irl/Snow'
 url_dataset: ''
 url_poster: ''
 url_project: ''

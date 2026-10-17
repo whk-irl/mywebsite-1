@@ -1,17 +1,15 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
 const imageModules = import.meta.glob('../../content/publication/*/featured.*', { eager: true, query: '?url', import: 'default' });
+const publicationSources = import.meta.glob('../../content/publication/*/index.md', { eager: true, query: '?raw', import: 'default' });
+const postSources = import.meta.glob('../../content/post/*/index.md', { eager: true, query: '?raw', import: 'default' });
 
-function readCollection(name) {
-  const root = path.join(process.cwd(), 'content', name);
-  return fs.readdirSync(root, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(root, entry.name, 'index.md')))
-    .map((entry) => {
-      const slug = entry.name.toLowerCase();
-      const { data, content } = matter(fs.readFileSync(path.join(root, entry.name, 'index.md'), 'utf8'));
+function readCollection(sources) {
+  return Object.entries(sources)
+    .map(([file, source]) => {
+      const slug = file.split('/').at(-2).toLowerCase();
+      const { data, content } = matter(source);
       const imageKey = Object.keys(imageModules).find((key) => key.toLowerCase().includes(`/publication/${slug}/`));
       // Some older case studies explicitly contain unverified draft claims and
       // placeholder statistics. Keep their videos, but do not publish the draft.
@@ -23,5 +21,5 @@ function readCollection(name) {
     }).sort ( (a, b) => b.dateValue - a.dateValue );
 }
 
-export const publications = readCollection('publication');
-export const posts = readCollection('post');
+export const publications = readCollection(publicationSources);
+export const posts = readCollection(postSources);

@@ -66,3 +66,7 @@ body{background:#f5f6f2}.shell{width:min(100% - 120px,1280px)}
 @media(max-width:800px){.research-row{grid-template-columns:36px minmax(0,1fr) minmax(120px,25%) 22px;gap:20px}.research-card h3{font-size:clamp(1.2rem,2.6vw,1.6rem)}}
 @media(max-width:560px){.research-row{grid-template-columns:30px minmax(0,1fr) 20px;gap:12px;min-height:0;padding:24px 0}.research-visual{display:none}.research-number{font-size:.63rem}.research-arrow{font-size:1.15rem}.research-card h3{font-size:1.15rem;margin:10px 0}.research-topics{font-size:.7rem}}
 @media(prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation-duration:.001ms!important}}
+
+/* Keep the supplied portrait's original framing and color. */
+.portrait-frame{aspect-ratio:1}
+.portrait-frame img{filter:none;object-position:center}

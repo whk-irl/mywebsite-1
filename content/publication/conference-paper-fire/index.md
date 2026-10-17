@@ -51,7 +51,7 @@ links:
   url: '/uploads/VRST2021_Fire.pdf'
   icon_pack: fas
   icon: file-pdf
-url_code: ''
+url_code: 'https://github.com/whk-irl/Fire'
 url_dataset: ''
 url_poster: ''
 url_project: ''

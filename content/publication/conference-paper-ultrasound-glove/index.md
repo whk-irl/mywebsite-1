@@ -50,7 +50,7 @@ links:
   url: '/uploads/ISMAR2023_Ultrasoundglove.pdf'
   icon_pack: fas
   icon: file-pdf
-url_code: ''
+url_code: 'https://github.com/whk-irl/Fabric-thermal-glove'
 url_dataset: ''
 url_poster: ''
 url_project: ''

@@ -35,7 +35,7 @@ links:
     url: '/uploads/CHI2024_ThermalMasking.pdf'
     icon_pack: fas
     icon: file-pdf
-url_code: ''
+url_code: 'https://github.com/whk-irl/Thermal-Masking'
 url_dataset: ''
 url_poster: ''
 url_project: ''
