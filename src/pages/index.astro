@@ -21,7 +21,7 @@ const chosen = publications.filter((item) => item.featured || item.slug === 'con
 
     <section class="work-section section-pad" id="work"><div class="shell">
       <div class="editorial-section-head" data-reveal><div><p class="section-label">01 / Research</p><h2>Selected work</h2></div><p>Projects at the intersection of perception, interaction, and engineering.</p></div>
-      <div class="work-grid">{chosen.map((item) => <ResearchCard item={item} />)}</div>
+      <div class="work-grid">{chosen.map((item, index) => <ResearchCard item={item} index={index} />)}</div>
       <div class="archive-bar"><a href="/publication/">All publications <span>↗</span></a><span>{publications.length} publications</span></div>
     </div></section>
 

@@ -1,9 +1,17 @@
 ---
-const { item } = Astro.props;
+const { item, index } = Astro.props;
 ---
 <article class="research-card" data-reveal>
-  <a class:list={['research-image', { 'research-image-abstract': !item.image }]} href={`/publication/${item.slug}/`} aria-label={`Read ${item.title}`}>
-    {item.image ? <img src={item.image} alt="" loading="lazy" /> : <div class="abstract-art" aria-hidden="true"><span class="paper-mark">CHI 2026</span><span class="paper-title">Thermal masking<br /><em>across the</em><br />human body.</span><span class="paper-foot">Patterns, pathways, and perceptual boundaries</span></div>}
+  <a class="research-row" href={`/publication/${item.slug}/`}>
+    <span class="research-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+    <div class="research-card-body">
+      <p class="research-meta">{item.publication_short || 'Research'} <span> / </span> {item.year}</p>
+      <h3>{item.title}</h3>
+      <p class="research-topics">{(item.tags || []).slice(0, 2).join(' · ')}</p>
+    </div>
+    <div class="research-visual" aria-hidden="true">
+      {item.image ? <img src={item.image} alt="" loading="lazy" /> : <div class="research-orbit"><i></i><i></i><i></i><span></span></div>}
+    </div>
+    <span class="research-arrow" aria-hidden="true">↗</span>
   </a>
-  <div class="research-card-body"><div class="research-meta"><span>{item.publication_short || 'Research'} · {item.year}</span><span>{(item.tags || []).slice(0, 2).join(' / ')}</span></div><h3><a href={`/publication/${item.slug}/`}>{item.title} <span aria-hidden="true">↗</span></a></h3></div>
 </article>
