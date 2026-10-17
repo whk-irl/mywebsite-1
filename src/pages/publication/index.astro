@@ -1,0 +1,5 @@
+---
+import Base from '../../layouts/Base.astro';
+import { publications } from '../../lib/content.js';
+---
+<Base title="Publications — Haokun Wang"><main id="main" class="archive-page shell"><p class="section-number">RESEARCH ARCHIVE <span>/</span> {String(publications.length).padStart(2, '0')} WORKS</p><div class="archive-heading"><h1>Research &amp;<br /><em>publications.</em></h1><p>A collection of work in haptics, human-computer interaction, and engineering.</p></div><div class="publication-list">{publications.map((paper, index) => <a class="publication-row" href={`/publication/${paper.slug}/`}><span class="publication-count">{String(index + 1).padStart(2, '0')}</span><span class="publication-title"><strong>{paper.title}</strong><small>{(paper.authors || []).map((author) => author === 'admin' ? 'Haokun Wang' : author).join(', ')}</small></span><span class="publication-venue">{paper.publication_short || 'RESEARCH'} / {paper.year}</span><span class="publication-arrow">↗</span></a>)}</div><a href="/" class="underlined-link back-home">← BACK TO HOME</a></main></Base>

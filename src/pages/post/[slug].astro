@@ -1,0 +1,7 @@
+---
+import Base from '../../layouts/Base.astro';
+import { posts } from '../../lib/content.js';
+export function getStaticPaths() { return posts.map((post) => ({ params: { slug: post.slug }, props: { post } })); }
+const { post } = Astro.props;
+---
+<Base title={`${post.title} — Haokun Wang`}><main id="main" class="detail-page shell"><a class="breadcrumb" href="/post/">← ALL UPDATES</a><div class="detail-header"><div><p class="section-number">NEWS <span>/</span> {post.year}</p><h1>{post.title}</h1></div></div><article class="prose-content" set:html={post.html} /><div class="detail-bottom"><a href="/post/">← ALL UPDATES</a><a href="/">HOME ↗</a></div></main></Base>

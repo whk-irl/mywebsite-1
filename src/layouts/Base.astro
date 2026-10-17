@@ -1,0 +1,31 @@
+---
+import '../styles/site.css';
+const { title = 'Haokun Wang — Research & Engineering', description = 'Haokun Wang is an instructor and researcher working across medical physics, human-computer interaction, haptics, and XR.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#111e26" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, 'https://wanghaokun.site')} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="page-top"><div class="header-inner shell">
+      <a class="wordmark" href="/" aria-label="Haokun Wang home"><span class="wordmark-symbol">hw<span>.</span></span><span class="wordmark-text">HAOKUN WANG<br /><small>RESEARCH &amp; ENGINEERING</small></span></a>
+      <nav class="main-nav" aria-label="Main navigation"><a href="/#work">Work</a><a href="/publication/">Publications</a><a href="/#about">About</a><a href="/#contact">Contact</a></nav>
+      <a class="header-cta" href="/uploads/resume.pdf">CV <span>↗</span></a>
+    </div></header>
+    <slot />
+    <footer class="site-footer"><div class="shell footer-inner"><span>© {new Date().getFullYear()} HAOKUN WANG</span><span>RESEARCH, ENGINEERING &amp; HUMAN EXPERIENCE</span><a href="#page-top">BACK TO TOP ↑</a></div></footer>
+    <script>
+      const observer = 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches ? new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); obs.unobserve(entry.target); } });
+      }, { threshold: 0.08 }) : null;
+      document.querySelectorAll('[data-reveal]').forEach((element) => { if (observer) { element.classList.add('can-reveal'); observer.observe(element); } });
+    </script>
+  </body>
+</html>

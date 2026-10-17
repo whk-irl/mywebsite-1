@@ -1,0 +1,5 @@
+---
+import Base from '../../layouts/Base.astro';
+import { posts } from '../../lib/content.js';
+---
+<Base title="News — Haokun Wang"><main id="main" class="archive-page shell"><p class="section-number">NOTES <span>/</span> UPDATES</p><div class="archive-heading"><h1>News &amp;<br /><em>notes.</em></h1><p>Updates from research, conferences, and the lab.</p></div><div class="news-list">{posts.map((post) => <a href={`/post/${post.slug}/`}><time datetime={String(post.date)}>{new Date(post.date).toLocaleString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' }).toUpperCase()}</time><span>{post.title}</span><span>↗</span></a>)}</div></main></Base>

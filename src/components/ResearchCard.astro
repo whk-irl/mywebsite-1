@@ -1,0 +1,11 @@
+---
+const { item, index = 0, featured = false } = Astro.props;
+const tags = (item.tags || []).slice(0, 2);
+---
+<article class:list={['research-card', { 'research-card-featured': featured }]} data-reveal>
+  <a class:list={['research-image', { 'research-image-abstract': !item.image }]} href={`/publication/${item.slug}/`} aria-label={`Read ${item.title}`}>
+    {item.image ? <img src={item.image} alt="" loading="lazy" /> : <div class="abstract-art" aria-hidden="true"><span class="abstract-ring ring-a"></span><span class="abstract-ring ring-b"></span><span class="abstract-cross">+</span><span class="abstract-text">THERMAL<br/>MASKING<small>THE HUMAN BODY / 2026</small></span></div>}
+    <span class="image-index">{String(index + 1).padStart(2, '0')} / RESEARCH</span><span class="image-link" aria-hidden="true">↗</span>
+  </a>
+  <div class="research-card-body"><div class="research-meta"><span>{item.publication_short || 'RESEARCH'} <i></i> {item.year}</span><span>{tags.join(' / ')}</span></div><h3><a href={`/publication/${item.slug}/`}>{item.title}</a></h3><a class="small-link" href={`/publication/${item.slug}/`}>VIEW PROJECT <span>↗</span></a></div>
+</article>

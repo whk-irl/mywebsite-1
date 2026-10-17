@@ -1,0 +1,8 @@
+---
+import Base from '../../layouts/Base.astro';
+import { publications } from '../../lib/content.js';
+export function getStaticPaths() { return publications.map((paper) => ({ params: { slug: paper.slug }, props: { paper } })); }
+const { paper } = Astro.props;
+const authors = (paper.authors || []).map((author) => author === 'admin' ? 'Haokun Wang' : author);
+---
+<Base title={`${paper.title} — Haokun Wang`} description={paper.abstract || paper.title}><main id="main" class="detail-page shell"><a href="/publication/" class="breadcrumb">← ALL PUBLICATIONS</a><div class="detail-header"><div><p class="section-number">{paper.publication_short || 'RESEARCH'} <span>/</span> {paper.year}</p><h1>{paper.title}</h1><p class="detail-authors">{authors.join(' · ')}</p><div class="detail-actions">{paper.links.map((link) => <a class="detail-button" href={link.url}>{link.name} ↗</a>)}{paper.url_video && <a class="detail-button secondary" href={paper.url_video}>Video ↗</a>}</div></div><aside><span>PUBLICATION</span><p set:html={paper.publicationHtml} /><span>TOPICS</span><p>{(paper.tags || []).join(' · ')}</p></aside></div>{paper.image && <div class="detail-image"><img src={paper.image} alt="" /></div>}<div class="detail-body"><aside>OVERVIEW <span>↓</span></aside><article class="prose-content">{paper.abstract && <><h2>Abstract</h2><p>{paper.abstract}</p></>}<div set:html={paper.html} /></article></div><div class="detail-bottom"><a href="/publication/">← ALL PUBLICATIONS</a><a href="/#contact">GET IN TOUCH ↗</a></div></main></Base>
